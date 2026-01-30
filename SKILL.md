@@ -7,7 +7,18 @@ description: Intelligent code context pruning using SWE-Pruner to reduce token c
 
 ## Overview
 
-This skill provides intelligent code pruning capabilities to optimize context size for LLM interactions. It uses the locally-deployed SWE-Pruner model to analyze code and remove irrelevant portions based on a query, reducing token consumption by 23-54% while maintaining 95%+ accuracy.
+This skill provides intelligent code pruning capabilities to optimize context size for LLM interactions. It uses the locally-deployed **SWE-Pruner** model to analyze code and remove irrelevant portions based on a query, reducing token consumption by 23-54% while maintaining 95%+ accuracy.
+
+### Based on SWE-Pruner
+
+This Skill is built on top of [SWE-Pruner](https://github.com/Ayanami1314/swe-pruner), an intelligent code pruning tool designed specifically for software engineering scenarios.
+
+**Upstream Project**:
+
+- 📦 GitHub: [Ayanami1314/swe-pruner](https://github.com/Ayanami1314/swe-pruner)
+- 🤗 Model: [ayanami-kitasan/code-pruner](https://huggingface.co/ayanami-kitasan/code-pruner)
+
+**Acknowledgments**: Thanks to the SWE-Pruner project for providing excellent code pruning capabilities.
 
 ## Prerequisites
 
@@ -119,6 +130,49 @@ print(f"Relevance: {result['score']:.1%}")
 ```python
 # More aggressive pruning
 result = prune_code(code, "database queries", threshold=0.8)
+```
+
+## Service Lifecycle
+
+### Automatic Management
+
+The service is automatically managed by the Skill:
+
+- **Startup**: Service starts automatically on first Skill invocation
+- **Running**: Remains active during coding sessions
+- **Shutdown**: Manually stop before gaming to release GPU
+
+### Manual Control
+
+```powershell
+# Start service
+.\scripts\start-service.ps1
+
+# Stop service (before gaming)
+.\scripts\stop-service.ps1
+
+# Check status
+.\scripts\check-service.ps1
+```
+
+### Using Service Manager
+
+```python
+from tools.service_manager import get_service_manager
+
+# Get manager instance
+manager = get_service_manager()
+
+# Prune with automatic service management
+result = manager.prune_with_lifecycle(
+    code=code,
+    query="focus on authentication"
+)
+
+# Check service status
+status = manager.check_service()
+print(f"Service running: {status['running']}")
+print(f"Usage count: {status['usage_count']}")
 ```
 
 ## Best Practices

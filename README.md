@@ -2,6 +2,19 @@
 
 Intelligent code context pruning using SWE-Pruner to reduce token consumption while maintaining relevance.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![SWE-Pruner](https://img.shields.io/badge/Powered%20by-SWE--Pruner-blue)](https://github.com/Ayanami1314/swe-pruner)
+
+## Based on SWE-Pruner
+
+This Skill is built on top of [SWE-Pruner](https://github.com/Ayanami1314/swe-pruner), an intelligent code pruning tool designed for software engineering scenarios.
+
+**Upstream Project**:
+
+- 📦 GitHub: [Ayanami1314/swe-pruner](https://github.com/Ayanami1314/swe-pruner)
+- 🤗 Model: [ayanami-kitasan/code-pruner](https://huggingface.co/ayanami-kitasan/code-pruner)
+
 ## Quick Start
 
 ### 1. Start Service
